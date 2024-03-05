@@ -255,7 +255,10 @@ function getJSON(obj) {
  *
  */
 function fromJSON(proto, json) {
-  return JSON.parse(json);
+  const obj = {};
+  Object.setPrototypeOf(obj, proto);
+  Object.assign(obj, JSON.parse(json));
+  return obj;
 }
 
 /**
